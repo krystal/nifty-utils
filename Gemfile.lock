@@ -1,0 +1,21 @@
+PATH
+  remote: .
+  specs:
+    nifty-utils (1.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (1.8.0)
+    rdoc (3.12.2)
+      json (~> 1.4)
+    sdoc (0.3.20)
+      json (>= 1.1.3)
+      rdoc (~> 3.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  nifty-utils!
+  sdoc

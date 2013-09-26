@@ -1,6 +1,6 @@
 module Nifty
   module Utils
-    class Railtie < Rails::Railtie
+    class Railtie < Rails::Railtie #:nodoc:
       
       initializer 'nifty.utils.initialize' do
 
