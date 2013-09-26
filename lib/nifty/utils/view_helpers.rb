@@ -35,6 +35,18 @@ module Nifty
         image_tag([host,path].join, :class => options[:class], :width => options[:size], :height => options[:size])
       end
       
+      # Renders a tick or cross character based on the provided boolean. Additional options
+      # can be passed if needed.
+      # 
+      # * <tt>:true_text</tt> - text to display next to a tick
+      # * <tt>:false_text</tt> - text to display next to a cross
+      def boolean_tag(bool, tip = nil, options = {})
+        true_text, false_text = "", ""
+        true_text = " <b>#{options[:true_text]}</b>" if options[:true_text]
+        false_text = " <b>#{options[:false_text]}</b>" if options[:false_text]
+        content_tag :span, (bool ? "<span class='true'>&#x2714;#{true_text}</span>" : "<span class='false'>&#x2718;#{false_text}</span>").html_safe, :class => "boolean", :title => tip
+      end
+      
     end
   end
 end
