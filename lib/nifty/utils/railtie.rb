@@ -8,10 +8,6 @@ module Nifty
         ActiveSupport.on_load(:active_record) do
           require 'nifty/utils/active_record'
           ::ActiveRecord::Base.send :include, Nifty::Utils::ActiveRecord
-          
-          require 'nifty/utils/key_value_store/key_value_pair'
-          require 'nifty/utils/key_value_store/model_extension'
-          ::ActiveRecord::Base.send :include, Nifty::Utils::KeyValueStore::ModelExtension
         end
         
         # load the Action View helpers
@@ -20,10 +16,6 @@ module Nifty
           ActionView::Base.send :include, Nifty::Utils::ViewHelpers
         end
         
-      end
-      
-      generators do
-        require 'nifty/utils/key_value_store/migration_generator'
       end
       
     end
