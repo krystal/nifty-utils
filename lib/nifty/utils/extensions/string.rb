@@ -18,7 +18,7 @@ class String
     self.ansi(32)
   end
   
-  def yello
+  def yellow
     self.ansi(33)
   end
   
