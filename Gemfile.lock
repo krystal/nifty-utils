@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nifty-utils (1.0.3)
+    nifty-utils (1.0.5)
 
 GEM
   remote: https://rubygems.org/
