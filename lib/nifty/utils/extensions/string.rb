@@ -1,3 +1,5 @@
+require 'nifty/utils/random_string'
+
 class String
   
   def self.random(options = {})
