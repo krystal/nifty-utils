@@ -27,7 +27,7 @@ module Nifty
             false
           end
 
-          def random(field, options = {})
+          def random_string(field, options = {})
             self.send :include, ModelExtensions unless self.has_random_strings?
             self.random_string_fields[field] = options
           end
