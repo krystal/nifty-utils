@@ -10,6 +10,8 @@ module Nifty
           ::ActiveRecord::Base.send :include, Nifty::Utils::ActiveRecord::Inquirer
           require 'nifty/utils/active_record/random_string'
           ::ActiveRecord::Base.send :include, Nifty::Utils::ActiveRecord::RandomString
+          require 'nifty/utils/active_record/default_value'
+          ::ActiveRecord::Base.send :include, Nifty::Utils::ActiveRecord::DefaultValue
         end
 
         # load the Action View helpers
