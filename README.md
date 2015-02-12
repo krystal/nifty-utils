@@ -63,3 +63,32 @@ bs.application            #=> <Application>
 bs.minute                 #=> 15
 bs.next_run_at            #=> 2015-01-02 18:39:25 +0000
 ```
+
+## Other Utilities
+
+### Until with maximum attempts
+
+Until blocks are great but can result in infinate loops which may be undesirable
+in certain situations. This helper method allows you to run an until block
+with a maximum number of attempts.
+
+Here's an example of how this might be used. We will check the job 5 times with
+a 2 second gap between.
+
+
+```ruby
+require 'nifty/utils/until_with_max_attempts'
+
+begin
+  Nifty::Utils::UntilWithMaxAttempts.until proc { job.complete? }, :attempts => 5, :gap => 2 do
+    puts "Waiting for job to complete..."
+  end
+  puts "Job has completed successfully!"
+rescue Nifty::Utils::UntilWithMaxAttempts::MaxAttemptsReached
+  puts "Job did not complete in a timely manner."
+  exit 1
+end
+```
+
+If you include the extensions provided by this library, you can also call this
+using the `until_with_max_attempts` method which is added to the Object class.
