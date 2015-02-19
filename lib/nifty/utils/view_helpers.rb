@@ -50,6 +50,15 @@ module Nifty
         content_tag :span, (bool ? "<span class='true'>&#x2714;#{true_text}</span>" : "<span class='false'>&#x2718;#{false_text}</span>").html_safe, :class => "boolean", :title => tip
       end
 
+      # Returns a URL to share some content on Twitter
+      #
+      # * <tt>:text</tt> - the text you wish to tweet
+      # * <tt>:url</tt> - the URL you want to tweet
+      def twitter_share_url(options = {})
+        "https://twitter.com/share?text=#{CGI.escape(options[:text])}&url=#{CGI.escape(options[:url])}"
+      end
+
+
     end
   end
 end

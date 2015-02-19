@@ -3,6 +3,15 @@
 This repository contains a number of useful utilties which are useful in most (if not all)
 Rails applications.
 
+## View Helpers
+
+```ruby
+# Generate a URL to generate a tweet
+twitter_share_url(:text => 'Some text to tweet', :url => 'http://yourapp.com/blah')
+```
+
+This method will
+
 ## Active Record
 
 The following are things which you can do with Active Record when you have Nifty Utils
