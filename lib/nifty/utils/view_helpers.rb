@@ -6,10 +6,13 @@ module Nifty
       # element. The ID of the outputted div will be `flash-alert` where alert is the
       # type of flash.
       #
-      # If there are multiple flashes set, they will all be displayed.
-      def display_flash
-        flashes = flash.collect do |key,msg|
-          content_tag :div, content_tag(:p, h(msg)), :id => "flash-#{key}"
+      # * <tt>:types</tt>: the names of flash messages to display with this helper
+      def display_flash(options = {})
+        options[:types] ||= [:alert, :warning, :notice]
+        options[:types].map do |key|
+          if flash[key]
+            content_tag :div, content_tag(:p, h(flash[key])), :id => "flash-#{key}", :class => "flashMessage flashMessage--#{key}"
+          end
         end.join.html_safe
       end
 
