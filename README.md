@@ -35,6 +35,12 @@ length_of_time_in_words(60)         #=> "1 minute"
 length_of_time_in_words(65)         #=> "1 minute, 5 seconds"
 ```
 
+#### Other methods
+
+* `rfc4226_qrcode(token)`
+* `gravatar(email, options = {})`
+* `boolean_tag(bool)`
+
 ## Active Record
 
 The following are things which you can do with Active Record when you have Nifty Utils

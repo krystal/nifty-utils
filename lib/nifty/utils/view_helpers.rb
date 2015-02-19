@@ -80,6 +80,13 @@ module Nifty
         end.join(options[:short] ? ' ' : ', ')
       end
 
+      # Return an image path for an RFC4226 QR code for a tiven RTP token
+      def rfc4226_qrcode(token)
+        data = "otpauth://totp/#{request.host}?secret=#{token}"
+        data = Rack::Utils.escape(data)
+        url = "https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=#{data}"
+        image_tag(url, :alt => 'Google Authenticator QRCode', :width => 200, :height => 200)
+      end
 
 
     end
