@@ -5,12 +5,28 @@ Rails applications.
 
 ## View Helpers
 
+#### Displaying flash messages
+
+This method will return HTML containing any flash messages in the types provided.
+
 ```ruby
-# Generate a URL to generate a tweet
-twitter_share_url(:text => 'Some text to tweet', :url => 'http://yourapp.com/blah')
+display_flash                             # => Will show messages for alert, warning & notices only
+display_flash(:types => [:custom_name])   # => Will show messages for custom_name only
 ```
 
-This method will
+The HTML generated will look like this:
+
+```html
+<p class='flashMessage flashMessage--notice' id='flash-notice'>
+  Your message here.
+</p>
+```
+
+#### Generating Twitter Share URLs
+
+```ruby
+twitter_share_url(:text => 'Some text to tweet', :url => 'http://yourapp.com/blah')
+```
 
 ## Active Record
 
