@@ -28,6 +28,13 @@ The HTML generated will look like this:
 twitter_share_url(:text => 'Some text to tweet', :url => 'http://yourapp.com/blah')
 ```
 
+#### Length of time in words
+
+```ruby
+length_of_time_in_words(60)         #=> "1 minute"
+length_of_time_in_words(65)         #=> "1 minute, 5 seconds"
+```
+
 ## Active Record
 
 The following are things which you can do with Active Record when you have Nifty Utils

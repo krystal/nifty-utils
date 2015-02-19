@@ -2,7 +2,8 @@ module Nifty
   module Utils
     class Railtie < Rails::Railtie #:nodoc:
 
-      initializer 'nifty.utils.initialize' do
+      initializer 'nifty.utils.initialize' do |app|
+        Rails.application.config.i18n.load_path << File.expand_path(File.join('..', '..', '..', '..', 'locales', 'en.yml'), __FILE__)
 
         # Load the Active Record extensions
         ActiveSupport.on_load(:active_record) do

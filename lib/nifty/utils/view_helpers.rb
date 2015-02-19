@@ -58,6 +58,29 @@ module Nifty
         "https://twitter.com/share?text=#{CGI.escape(options[:text])}&url=#{CGI.escape(options[:url])}"
       end
 
+      # Returns a length of time in works (no I18N)
+      #
+      def length_of_time_in_words(seconds, options = {})
+        days = (seconds / 60 / 60 / 24).floor
+        hours = ((seconds / 60 / 60) - (days * 24)).floor
+        minutes = ((seconds / 60) - (days * 24 * 60) - (hours * 60)).floor
+        seconds = (seconds - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60)).floor
+        Array.new.tap do |s|
+          if options[:short]
+            s << "#{days}d" if days > 0
+            s << "#{hours}h" if hours > 0
+            s << "#{minutes}m" if minutes > 0
+            s << "#{seconds}s" if seconds > 0
+          else
+            s << pluralize(days, 'day') if days > 0
+            s << pluralize(hours, 'hour') if hours > 0
+            s << pluralize(minutes, 'minute') if minutes > 0
+            s << pluralize(seconds, 'second') if seconds > 0
+          end
+        end.join(options[:short] ? ' ' : ', ')
+      end
+
+
 
     end
   end
