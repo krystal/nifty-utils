@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.homepage      = "https://github.com/atech/nifty-utils"
   s.licenses      = ['MIT']
   s.version       = Nifty::Utils::VERSION
-  s.files         = Dir.glob("{lib}/**/*")
+  s.files         = Dir.glob("{lib,locales}/**/*")
   s.require_paths = ["lib"]
   s.authors       = ["Adam Cooke"]
   s.email         = ["adam@atechmedia.com"]
