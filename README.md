@@ -145,3 +145,6 @@ Nifty::Utils::AutoAttributePermit.setup
 # In your controllers
 params.require(:person).permit(:auto)
 ```
+
+Note: only fields which have labels which are present in the form before the submit
+button will be auto permitted.

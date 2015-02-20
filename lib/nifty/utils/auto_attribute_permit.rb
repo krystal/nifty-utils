@@ -8,7 +8,7 @@ module Nifty
       end
 
       def self.verifier
-        @verified ||= ActiveSupport::MessageVerifier.new(Rails.application.secrets.secret_key_base)
+        @verifier ||= ActiveSupport::MessageVerifier.new(Rails.application.secrets.secret_key_base)
       end
 
       module StrongParameterExtensions
