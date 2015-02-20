@@ -130,3 +130,18 @@ end
 
 If you include the extensions provided by this library, you can also call this
 using the `until_with_max_attempts` method which is added to the Object class.
+
+### Auto Attribute Permitting
+
+To permit attribtues to be bulk assigned, we often see `params.permit(:field1, :field2)`
+in our controllers. This automatic method will permit the fields which are included
+in the form to be saved in a secure manner.
+
+```ruby
+# In an initializer
+require 'nifty/utils/auto_attribute_permit'
+Nifty::Utils::AutoAttributePermit.setup
+
+# In your controllers
+params.require(:person).permit(:auto)
+```
