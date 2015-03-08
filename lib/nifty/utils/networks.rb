@@ -2,7 +2,7 @@ require 'ipaddr'
 
 module Nifty
   module Utils
-    module NetworkRestrictions
+    module Networks
 
       def self.ip_in_networks?(ip, networks = [])
         !!network_for_ip(networks, ip)
