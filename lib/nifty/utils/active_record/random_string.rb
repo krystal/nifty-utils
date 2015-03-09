@@ -43,15 +43,17 @@ module Nifty
 
           def generate_random_strings
             self.class.random_string_fields.each do |field, opts|
-              if opts[:unique]
-                until self.send(field)
-                  proposed_string = RandomString.random_string(opts[:type], opts)
-                  unless self.class.where(field => proposed_string).exists?
-                    self.send("#{field}=", proposed_string)
+              if self.send(field).blank?
+                if opts[:unique]
+                  until self.send(field)
+                    proposed_string = RandomString.random_string(opts[:type], opts)
+                    unless self.class.where(field => proposed_string).exists?
+                      self.send("#{field}=", proposed_string)
+                    end
                   end
+                else
+                  self.send("#{field}=", RandomString.random_string(opts[:type], opts))
                 end
-              else
-                self.send("#{field}=", RandomString.random_string(opts[:type], opts))
               end
             end
           end
