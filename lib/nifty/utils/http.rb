@@ -49,9 +49,15 @@ module Nifty
           timeout = options[:timeout] || 60
           Timeout.timeout(timeout) do
             result = connection.request(request)
+            if result.content_type == 'application/json'
+              body = JSON.parse(result.body)
+            else
+              body = result.body
+            end
             {
               :code => result.code.to_i,
-              :body => result.body
+              :type => result.content_type,
+              :body => body
             }
           end
         rescue SocketError, Errno::ECONNRESET, EOFError, Errno::EINVAL => e
