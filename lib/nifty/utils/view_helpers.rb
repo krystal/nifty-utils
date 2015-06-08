@@ -88,6 +88,13 @@ module Nifty
         image_tag(url, :alt => 'Google Authenticator QRCode', :width => 200, :height => 200)
       end
 
+      # Return a Google Fonts tag
+      def google_fonts(sets = {})
+        sets = sets.each_with_object([]) do |(name, weights), array|
+          array << "#{name}:#{weights.join(',')}"
+        end.join('|')
+        "<link href='https://fonts.googleapis.com/css?family=#{sets}' rel='stylesheet' type='text/css'>".html_safe
+      end
 
     end
   end

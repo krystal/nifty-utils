@@ -40,6 +40,7 @@ length_of_time_in_words(65)         #=> "1 minute, 5 seconds"
 * `rfc4226_qrcode(token)`
 * `gravatar(email, options = {})`
 * `boolean_tag(bool)`
+* `google_fonts('Roboto' => [300, 600, 700], 'Open Sans' => [300, 700])`
 
 ## Active Record
 
