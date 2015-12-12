@@ -134,7 +134,7 @@ using the `until_with_max_attempts` method which is added to the Object class.
 
 ### Auto Attribute Permitting
 
-To permit attribtues to be bulk assigned, we often see `params.permit(:field1, :field2)`
+To permit attributes to be bulk assigned, we often see `params.permit(:field1, :field2)`
 in our controllers. This automatic method will permit the fields which are included
 in the form to be saved in a secure manner.
 
