@@ -29,7 +29,8 @@ module Nifty
 
           def _set_default_values
             self.class.default_value_definitions.each do |field, opts|
-              if self.send(field).blank?
+              value = self.send(field)
+              if value.nil? || (value.is_a?(String) && value.empty?)
                 proposed_value = self.instance_exec(&opts[:block])
                 self.send("#{field}=", proposed_value)
               end
