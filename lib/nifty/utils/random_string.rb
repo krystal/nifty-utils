@@ -1,16 +1,18 @@
 module Nifty
   module Utils
     class RandomString
-  
-      LETTERS = ('A'..'Z').to_a + ('a'..'z').to_a
+
+      UPPER_LETTERS = ('A'..'Z').to_a
+      LOWER_LETTERS = ('a'..'z').to_a
+      LETTERS = UPPER_LETTERS + LOWER_LETTERS
       NUMBERS = (0..9).to_a
       WORD_CHARS = LETTERS + NUMBERS
       SYMBOLS = ['-', '!', '_', '@', '+', '*', '?', '%', '&', '/']
-  
+
       def self.generate(options = {})
         options[:length]  ||= 30
         options[:symbols] ||= false
-        chars = WORD_CHARS
+        chars = options[:upper_letters_only] ? UPPER_LETTERS : WORD_CHARS
         chars += SYMBOLS if options[:symbols]
         (
           [LETTERS[rand(LETTERS.size)]] +
@@ -18,7 +20,7 @@ module Nifty
           [LETTERS[rand(LETTERS.size)]]
         ).join
       end
-  
+
     end
   end
 end
