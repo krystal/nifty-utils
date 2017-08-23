@@ -1,3 +1,5 @@
+require "securerandom"
+
 module Nifty
   module Utils
     class RandomString
@@ -16,7 +18,7 @@ module Nifty
         chars += SYMBOLS if options[:symbols]
         (
           [LETTERS[rand(LETTERS.size)]] +
-          (0...options[:length]-2).map{ chars[rand(chars.size)] } +
+          (0...options[:length]-2).map{ chars[SecureRandom.random_number(chars.size)] } +
           [LETTERS[rand(LETTERS.size)]]
         ).join
       end
